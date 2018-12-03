@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Main
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div>
+    <ion-input type="text" [(ngModel)] = "encodText"></ion-input>
+    <button ion button block (click)="encode()">Encode</button>
+  </div>
+  <div>
+    <button ion button block (click)="scan()">Scan</button>
+  </div>
+  <div *ngIf="scannedData.text">
+    <label>Okunan Kod:</label>
+    <br>
+    <span>{{scannedData.text}}</span>
+  </div>
+    <ion-card *ngFor= "let postItem of posts | slice:0:10">
+      <ion-card-content>
+      <ion-card-title (click)="goDetail(postItem,users[postItem.userId].name)">
+      {{postItem.title}}
+      </ion-card-title>
+      <p>
+        {{users[postItem.userId].name}}
+      </p>
+      <p>
+        {{postItem.body}}
+      </p>
+       </ion-card-content>
+    </ion-card>
+</ion-content>
